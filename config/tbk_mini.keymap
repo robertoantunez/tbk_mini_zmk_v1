@@ -63,7 +63,7 @@
 &kp ESC         &kp EXCL           &kp AT           &kp HASH          &kp DLLR              &kp PRCNT              &kp CARET  &kp AMPS        &kp STAR  &kp LPAR  &kp RPAR  &kp K_BACK
 &kp CAPSLOCK    &trans             &kp ASTERISK     &kp SLASH         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL  &kp UNDERSCORE  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
 &kp LEFT_SHIFT  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY        &kp C_PREVIOUS        &kp K_FORWARD          &kp PLUS   &kp MINUS       &kp LBRC  &kp RBRC  &kp PIPE  &kp RS(TILDE)
-                                                    &kp LEFT_COMMAND  &kp SPACE             &mo 3                  &trans     &trans          &trans
+                                                    &kp LEFT_COMMAND  &kp SPACE             &trans                 &trans     &trans          &trans
             >;
         };
 
