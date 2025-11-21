@@ -28,10 +28,10 @@
         default_layer {
             label = "DEFAULT";
             bindings = <
-&kp TAB           &kp Q  &kp W  &kp E             &kp R      &kp T        &kp Y      &kp U          &kp I          &kp O    &kp P     &kp ENTER
-&kp LEFT_SHIFT    &kp A  &kp S  &kp D             &kp F      &kp G        &kp H      &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z  &kp X  &kp C             &kp V      &kp B        &kp N      &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                                &kp LEFT_COMMAND  &kp SPACE  &lt 1 SPACE  &lt 2 RET  &kp BACKSPACE  &kp RIGHT_ALT
+&kp TAB           &kp Q  &kp W  &kp E             &kp R      &kp T  &kp Y  &kp U          &kp I          &kp O    &kp P     &kp ENTER
+&kp LEFT_SHIFT    &kp A  &kp S  &kp D             &kp F      &kp G  &kp H  &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_CONTROL  &kp Z  &kp X  &kp C             &kp V      &kp B  &kp N  &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
+                                &kp LEFT_COMMAND  &kp SPACE  &mo 1  &mo 2  &kp BACKSPACE  &kp RIGHT_ALT
             >;
         };
 
@@ -44,10 +44,10 @@
         number_layer {
             label = "NUMBER";
             bindings = <
-&kp TAB  &kp F2          &trans          &trans            &trans                &trans                 &kp STAR     &kp N7        &kp N8         &kp N9        &kp MINUS   &kp DEL
-&trans   &kp F7          &trans          &kp UP_ARROW      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH    &kp NUMBER_4  &kp NUMBER_5   &kp NUMBER_6  &kp PLUS    &kp HOME
-&trans   &kp KP_NUMLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW       &kp EQUAL              &kp N0       &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3  &kp PERIOD  &kp END
-                                         &kp LEFT_COMMAND  &kp SPACE             &trans                 &lt 3 SPACE  &kp ENTER     &kp RIGHT_ALT
+&kp TAB  &kp F2          &trans          &trans            &trans                &trans                 &kp STAR   &kp N7        &kp N8         &kp N9        &kp MINUS   &kp DEL
+&trans   &kp F7          &trans          &kp UP_ARROW      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH  &kp NUMBER_4  &kp NUMBER_5   &kp NUMBER_6  &kp PLUS    &kp HOME
+&trans   &kp KP_NUMLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW       &kp EQUAL              &kp N0     &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3  &kp PERIOD  &kp END
+                                         &kp LEFT_COMMAND  &kp SPACE             &trans                 &mo 3      &kp ENTER     &kp RIGHT_ALT
             >;
         };
 
@@ -60,10 +60,10 @@
         symbol_layer {
             label = "SYMBOL";
             bindings = <
-&kp ESC         &kp EXCL           &kp AT           &kp HASH          &kp DLLR              &kp PRCNT              &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp K_BACK
-&kp CAPSLOCK    &none              &kp ASTERISK     &kp SLASH         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &none
-&kp LEFT_SHIFT  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY        &kp C_PREVIOUS        &kp K_FORWARD          &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &none
-                                                    &kp LEFT_COMMAND  &kp SPACE             &mo 3                  &trans     &trans     &trans
+&kp ESC         &kp EXCL           &kp AT           &kp HASH          &kp DLLR              &kp PRCNT              &kp CARET  &kp AMPS        &kp STAR  &kp LPAR  &kp RPAR  &kp K_BACK
+&kp CAPSLOCK    &none              &kp ASTERISK     &kp SLASH         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL  &kp UNDERSCORE  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LEFT_SHIFT  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY        &kp C_PREVIOUS        &kp K_FORWARD          &kp PLUS   &kp MINUS       &kp LBRC  &kp RBRC  &kp PIPE  &kp RS(TILDE)
+                                                    &kp LEFT_COMMAND  &kp SPACE             &mo 3                  &trans     &trans          &trans
             >;
         };
 
@@ -76,10 +76,10 @@
         hotkey_layer {
             label = "HOTKEY";
             bindings = <
-&none  &macro_email_q  &macro_phone  &macro_pass    &none   &none   &none   &none   &none  &none  &none  &none
-&none  &macro_email_g  &none         &macro_pass_2  &none   &none   &none   &none   &none  &none  &none  &none
-&none  &none           &none         &none          &none   &none   &none   &none   &none  &none  &none  &none
-                                     &trans         &trans  &trans  &trans  &trans
+&rgb_ug RGB_EFF  &macro_email_q  &macro_phone  &macro_pass    &none   &none   &none   &none   &none  &none  &none  &none
+&rgb_ug RGB_EFR  &macro_email_g  &none         &macro_pass_2  &none   &none   &none   &none   &none  &none  &none  &none
+&bt BT_CLR       &none           &none         &none          &none   &none   &none   &none   &none  &none  &none  &none
+                                               &trans         &trans  &trans  &trans  &trans
             >;
         };
 
