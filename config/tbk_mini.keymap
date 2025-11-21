@@ -44,9 +44,9 @@
         number_layer {
             label = "NUMBER";
             bindings = <
-&kp TAB  &kp F2          &trans          &trans            &trans                &trans                 &kp STAR   &kp N7        &kp N8         &kp N9        &kp MINUS   &kp DEL
-&trans   &kp F7          &trans          &kp UP_ARROW      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH  &kp NUMBER_4  &kp NUMBER_5   &kp NUMBER_6  &kp PLUS    &kp HOME
-&trans   &kp KP_NUMLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW       &kp EQUAL              &kp N0     &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3  &kp PERIOD  &kp END
+&kp TAB  &kp F2          &none           &none             &none                 &none                  &kp STAR   &kp N7        &kp N8         &kp N9        &kp MINUS   &kp DEL
+&none    &kp F7          &none           &kp UP_ARROW      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH  &kp NUMBER_4  &kp NUMBER_5   &kp NUMBER_6  &kp PLUS    &kp HOME
+&none    &kp KP_NUMLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW       &kp EQUAL              &kp N0     &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3  &kp PERIOD  &kp END
                                          &kp LEFT_COMMAND  &kp SPACE             &trans                 &mo 3      &kp ENTER     &kp RIGHT_ALT
             >;
         };
@@ -63,7 +63,7 @@
 &kp ESC         &kp EXCL           &kp AT           &kp HASH          &kp DLLR              &kp PRCNT              &kp CARET  &kp AMPS        &kp STAR  &kp LPAR  &kp RPAR  &kp K_BACK
 &kp CAPSLOCK    &none              &kp ASTERISK     &kp SLASH         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL  &kp UNDERSCORE  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
 &kp LEFT_SHIFT  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY        &kp C_PREVIOUS        &kp K_FORWARD          &kp PLUS   &kp MINUS       &kp LBRC  &kp RBRC  &kp PIPE  &kp RS(TILDE)
-                                                    &kp LEFT_COMMAND  &kp SPACE             &mo 3                  &trans     &trans          &trans
+                                                    &kp LEFT_COMMAND  &kp SPACE             &mo 3                  &none      &none           &none
             >;
         };
 
@@ -76,10 +76,10 @@
         hotkey_layer {
             label = "HOTKEY";
             bindings = <
-&rgb_ug RGB_EFF  &macro_email_q  &macro_phone  &macro_pass    &none   &none   &none   &none   &none  &none  &none  &none
-&rgb_ug RGB_EFR  &macro_email_g  &none         &macro_pass_2  &none   &none   &none   &none   &none  &none  &none  &none
-&bt BT_CLR       &none           &none         &none          &none   &none   &none   &none   &none  &none  &none  &none
-                                               &trans         &trans  &trans  &trans  &trans
+&rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_TOG  &none   &none   &none  &none  &none  &none
+&rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_BRD  &none            &none   &none   &none  &none  &none  &none
+&bt BT_CLR       &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &none            &none            &none   &none   &none  &none  &none  &none
+                                                   &trans           &trans           &trans           &trans  &trans
             >;
         };
 
