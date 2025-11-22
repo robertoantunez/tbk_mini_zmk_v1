@@ -4,7 +4,7 @@
 /* Column offset for right half */
 &default_transform {
     col-offset = <6>;
-}
+};
 
 /* Key matrix configuration */
 &kscan0 {
