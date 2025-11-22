@@ -1,23 +1,59 @@
-/*
- * Copyright (c) 2020 Pete Johanson
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include "tbk_mini.dtsi"
+#include <dt-bindings/led/led.h>
 
+/* Column offset for right half */
 &default_transform {
-	col-offset = <6>;
+    col-offset = <6>;
+}
+
+/* Key matrix configuration */
+&kscan0 {
+    col-gpios = 
+        <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 };
 
-&kscan0 {
+/* SPI / LED strip configuration for underglow */
+&pinctrl {
+    spi1_default: spi1_default {
+        group1 {
+            psels = 
+                <NRF_PSEL(SPI_MOSI, 0, 8)>,
+                <NRF_PSEL(SPI_MISO, 0, 7)>,
+                <NRF_PSEL(SPI_SCK , 0, 5)>;
+        };
+    };
+};
 
-	col-gpios
-		= <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		, <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		, <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		, <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		, <&gpio0 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		, <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-		;
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-names = "default";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        label = "SK6812mini_right";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+        chain-length = <42>;
+        spi-one-frame  = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <
+            LED_COLOR_ID_GREEN
+            LED_COLOR_ID_RED
+            LED_COLOR_ID_BLUE
+        >;
+    };
+};
+
+{
+    chosen {
+        zmk,underglow = &led_strip;
+    };
 };
