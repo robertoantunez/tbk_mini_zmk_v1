@@ -1,15 +1,15 @@
 #include "tbk_mini.dtsi"
 #include <dt-bindings/led/led.h>
 
-/* Key matrix configuration */
+/* Key matrix configuration for left half */
 &kscan0 {
     col-gpios = 
-        <&gpio0 19 GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>,
-        <&gpio0 20 GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>,
-        <&gpio0 10 GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>,
-        <&gpio0 6  GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>,
-        <&gpio0 7  GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>,
-        <&gpio0 8  GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN>;
+        <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+        <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 };
 
 /* SPI / LED strip configuration for underglow */
@@ -47,8 +47,10 @@
     };
 };
 
+/* Assign underglow LED strip to ZMK */
 {
     chosen {
         zmk,underglow = &led_strip;
     };
 };
+
