@@ -1,92 +1,78 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/keys.h>
+#include <behaviors/mouse_keys.dtsi>
 
-#define DEFAULT 0
-#define NUMBER  1
-#define SYMBOL  2
-#define HOTKEY  3
-#define SETTING 4
+&lt {
+    tapping-term-ms = <240>;
+    flavor = "balanced";
+    quick-tap-ms = <150>;
+};
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        // -----------------------------------------------------------------------------------------
-        // | TAB |  Q  |  W  |  E  |  R       |  T  |     |  Y  |  U        |  I  |  O  |  P  |   BKSP    |
-        // | CTL |  A  |  S  |  D  |  F       |  G  |     |  H  |  J        |  K  |  L  |  ;  |     '     |
-        // | ALT |  Z  |  X  |  C  |  V       |  B  |     |  N  |  M        |  ,  |  .  |  /  | SHFT/CLCK |
-        //                    | GUI/~ | NUM/SPC | SHIFT |     | HTK/ENT | SYM/SPC  | GUI/BSPC |
-
-        default_layer {
-            label = "DEFAULT";
+        Base {
+            label = "Base";
             bindings = <
-&kp TAB           &kp Q  &kp W  &kp E             &kp R      &kp T  &kp Y  &kp U          &kp I          &kp O    &kp P     &kp ENTER
-&kp LEFT_SHIFT    &kp A  &kp S  &kp D             &kp F      &kp G  &kp H  &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z  &kp X  &kp C             &kp V      &kp B  &kp N  &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                                &kp LEFT_COMMAND  &kp SPACE  &mo 1  &mo 2  &kp BACKSPACE  &kp RIGHT_ALT
+  &kp TAB  &kp Q  &kp W      &kp E      &kp R  &kp T    &kp Y    &kp U      &kp I    &kp O     &kp P    &kp BSPC
+  &kp ESC  &kp A  &kp S      &kp D      &kp F  &kp G    &kp H    &kp J      &kp K    &kp L  &kp SEMI    &kp APOS
+&kp LSHFT  &kp Z  &kp X      &kp C      &kp V  &kp B    &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
+                         &kp LCTRL  &kp SPACE  &mo 1    &mo 2  &kp SPACE  &kp RET
             >;
         };
 
-        // -----------------------------------------------------------------------------------------
-        // | ESC |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL |
-        // | CTL |  F1 |  F2 |  F3 | F4  |  F5 |   |  ←  |  ↓  |  ↑  |  →  |     |     |
-        // | ALT |  F6 |  F7 |  F8 | F9  | F10 |   | F12 | F11 |     |     |     |     |
-        //                   |     |     |     |   | SET |     |     |
-
-        number_layer {
-            label = "NUMBER";
+        Lower {
+            label = "Lower";
             bindings = <
-&kp TAB  &kp F2          &trans          &trans            &trans                &trans                 &kp STAR   &kp N7        &kp N8         &kp N9        &kp MINUS   &kp DEL
-&trans   &kp F7          &trans          &kp UP_ARROW      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SLASH  &kp NUMBER_4  &kp NUMBER_5   &kp NUMBER_6  &kp PLUS    &kp HOME
-&trans   &kp KP_NUMLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW       &kp EQUAL              &kp N0     &kp NUMBER_1  &kp NUMBER_2   &kp NUMBER_3  &kp PERIOD  &kp END
-                                         &kp LEFT_COMMAND  &kp SPACE             &trans                 &mo 3      &kp ENTER     &kp RIGHT_ALT
+      &trans    &trans    &kp UP     &trans     &trans    &trans       &kp N7   &kp N8  &kp N9   &kp N0  &kp HOME   &kp F1
+      &trans  &kp LEFT  &kp DOWN  &kp RIGHT     &trans    &trans       &kp N4   &kp N5  &kp N6    &none    &trans  &kp F10
+&kp LEFT_ALT    &trans    &trans     &trans  &kp MINUS  &kp PLUS       &kp N1   &kp N2  &kp N3  &kp DOT    &trans  &kp F20
+                                   &kp LGUI  &kp SPACE    &trans    &kp RCTRL  &kp SPACE  &kp RET
             >;
         };
 
-        // -----------------------------------------------------------------------------------------
-        // | ESC  |  !  |  @  |  #  |  $  |  %  |     |  ^   |  &   |  *   |  (   |  )  | DEL |
-        // |      |     |     |  "  |  :  |  ~  |     |  -   |  =   |  [   |  ]   |  \  |     |
-        // |      |     |     |  '  |  ;  |  `  |     |  _   |  +   |  {   |  }   | "|" |     |
-        //                    |     | SET |     |     |      |      |      |
-
-        symbol_layer {
-            label = "SYMBOL";
+        Raise {
+            label = "Raise";
             bindings = <
-&kp ESC         &kp EXCL           &kp AT           &kp HASH          &kp DLLR              &kp PRCNT              &kp CARET  &kp AMPS        &kp STAR  &kp LPAR  &kp RPAR  &kp K_BACK
-&kp CAPSLOCK    &trans             &kp ASTERISK     &kp SLASH         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL  &kp UNDERSCORE  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LEFT_SHIFT  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_PLAY        &kp C_PREVIOUS        &kp K_FORWARD          &kp PLUS   &kp MINUS       &kp LBRC  &kp RBRC  &kp PIPE  &kp RS(TILDE)
-                                                    &kp LEFT_COMMAND  &kp SPACE             &trans                 &trans     &trans          &trans
+&trans      &kp EXCL       &kp AT    &kp HASH   &kp DLLR     &kp PRCNT    &kp CARET   &kp AMPS  &kp KP_MULTIPLY  &kp LPAR  &kp RPAR    &kp DEL
+&trans    &bt BT_CLR   &bt BT_PRV  &bt BT_NXT     &trans         &to 3    &kp UNDER  &kp EQUAL         &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&trans  &out OUT_TOG  &bootloader      &trans     &trans        &trans    &kp MINUS   &kp PLUS         &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                                     &kp LGUI  &kp SPACE  &kp LEFT_ALT       &trans    &kp SPACE  &bootloader
             >;
         };
 
-        // -----------------------------------------------------------------------------------------
-        // |   |   |   |   |   |   |     |   |   |   |   |   |   |
-        // |   |   |   |   |   |   |     |   |   |   |   |   |   |
-        // |   |   |   |   |   |   |     |   |   |   |   |   |   |
-        //             |     |     |     |     |     |
-
-        hotkey_layer {
-            label = "HOTKEY";
+        Game {
+            label = "Game";
             bindings = <
-&rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_TOG  &none   &none   &none  &none  &none  &none
-&rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_BRD  &none            &none   &none   &none  &none  &none  &none
-&bt BT_CLR       &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &none            &none            &none   &none   &none  &none  &none  &none
-                                                   &trans           &trans           &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans         &sl 4      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans  &trans   &to 0
+                        &trans  &trans  &kp LEFT_ALT    &kp RGUI  &kp SPACE  &trans
             >;
         };
 
-        // -----------------------------------------------------------------------------------------
-        // | RGB BRI+ | RGB SAT+ | RGB HUE+ | RGB ANI+ | | RGB TOG |     |  BT1  | BT2 | BT3 | BT4 | BT5 | BT CLR |
-        // | RGB BRI- | RGB SAT- | RGB HUE- | RGB ANI- | |         |     |       |     |     |     |     |        |
-        // |          |          |          |          | |         |     | RESET |     |     |     |     |        |
-        //                                  |          | |         |     |       |     |     |
+        Game_++ {
+            label = "Game ++";
+            bindings = <
+ &kt F5  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5    &kp LC(RA(Y))  &kp LC(RA(U))  &kp LC(RA(I))  &kp LC(RA(H))  &kp LC(RA(J))  &kp LC(RA(DEL))
+  &to 3         &kp L         &kp O         &kp Y         &kp K         &kp G           &trans         &trans         &trans         &trans         &trans       &kp LA(F4)
+&kp F10         &none         &to 0         &none  &kp NUMBER_6  &kp NUMBER_7           &trans         &trans         &trans         &trans         &trans            &to 0
+                                            &kp J         &kp I         &kp M           &trans         &trans        &trans
+            >;
+        };
+
+        Mouse {
+            bindings = <
+   &trans  &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans     &trans
+   &trans  &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans     &trans
+&mkp MCLK  &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans  &mkp LCLK
+                           &mkp LCLK  &trans  &mkp RCLK    &trans  &trans  &trans
+            >;
+        };
     };
 };
